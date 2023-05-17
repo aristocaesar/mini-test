@@ -1,0 +1,5 @@
+.bg-jumbotron {
+    background-image: url('/img/wartawan.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('id')->autoIncrement();
             $table->string('username', 25);
             $table->string('password', 25);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
