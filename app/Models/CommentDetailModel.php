@@ -12,4 +12,14 @@ class CommentDetailModel extends Model
     protected $table = 'tb_detail';
 
     protected $fillable = ['id_artikel', 'id_komentar'];
+
+    public static function findByArticle($id)
+    {
+        return self::with('comments')->where('id_artikel', $id)->get();
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(CommentModel::class, 'id_komentar', 'id');
+    }
 }

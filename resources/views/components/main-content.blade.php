@@ -23,7 +23,7 @@
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
-        @if("ADMIN" == "AUTHOR")
+        @if(session('ROLE') == "AUTHOR")
             <x-sidebar-author/>
         @else
             <x-sidebar-admin/>
@@ -58,7 +58,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::guard('author')->user()->username }}</span>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -116,7 +116,11 @@
             <div class="modal-body">Jika anda keluar maka sesi login anda akan berkahir.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                <a class="btn btn-primary" href="login.html">Ya,Keluar</a>
+                @if(session('ROLE') == 'AUTHOR')
+                <a class="btn btn-primary" href="/author/logout">Ya,Keluar</a>
+                @else
+                <a class="btn btn-primary" href="/admin/logout">Ya,Keluar</a>
+                @endif
             </div>
         </div>
     </div>

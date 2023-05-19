@@ -12,4 +12,9 @@ class ArticleModel extends Model
     protected $table = 'tb_artikel';
 
     protected $fillable = ['judu_artikel', 'isi_artikel', 'id_penulis', 'tanggal'];
+
+    public function penulis()
+    {
+        return $this->belongsTo(AuthorModel::class, 'id_penulis', 'id');
+    }
 }

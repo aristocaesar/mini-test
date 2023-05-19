@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tb_admin', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
             $table->string('username', 25);
-            $table->string('password', 25);
+            $table->string('password', 256);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

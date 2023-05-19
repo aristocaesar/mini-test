@@ -16,6 +16,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Masuk!</h1>
                                     </div>
                                     <form action="/author" class="user" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="username"

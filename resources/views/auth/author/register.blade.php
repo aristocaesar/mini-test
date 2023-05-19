@@ -16,13 +16,15 @@
                                         <h1 class="h4 text-gray-900 mb-4">Daftar dan Mulai Menulis !</h1>
                                     </div>
                                     <form action="/author/register" class="user" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="username"
+                                                name="username"
                                                 placeholder="Masukkan Username" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" placeholder="Masukkan Password" required>
+                                            <input type="text" class="form-control form-control-user"  name="password" placeholder="Masukkan Password" required>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Daftar

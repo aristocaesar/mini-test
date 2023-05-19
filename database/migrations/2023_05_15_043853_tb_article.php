@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tb_penulis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username', 50);
-            $table->string('password', 10);
+            $table->string('password', 256);
             $table->boolean('status');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
