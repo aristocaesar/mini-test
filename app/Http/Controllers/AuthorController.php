@@ -24,6 +24,10 @@ class AuthorController extends Controller
             'password' => ['required'],
         ]);
 
+        $author = AuthorModel::where('username', $credentials['username'])->first();
+
+        if ($author->status == 0) return back()->with('loginError', 'Akun anda ditangguhkan!');
+
         if (Auth::guard('author')->attempt($credentials)) {
             $request->session()->put('ROLE', 'AUTHOR');
             $request->session()->regenerate();
@@ -66,6 +70,8 @@ class AuthorController extends Controller
         if ($id == null) return redirect('/author/article');
 
         $article = ArticleModel::where('id', $id)->first();
+        if ($article == null) return redirect('/author/article');
+
         return view('author.edit', compact('article'));
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
@@ -66,23 +67,21 @@ Route::prefix('/admin')->group(function () {
         return view('auth.admin.login');
     });
 
+    Route::post('/', [AdminController::class, 'authenticate']);
+
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->middleware('redirect.admin');
 
-    Route::get('/article', function () {
-        return view('admin.list');
-    });
+    Route::get('/article', [AdminController::class, 'getAllArticle'])->middleware('redirect.admin');
 
-    Route::get('/add-article', function () {
-        return view('admin.add');
-    });
+    Route::get('/edit-article', [AdminController::class, 'getById'])->middleware('redirect.admin');
 
-    Route::get('/edit-article', function () {
-        return view('admin.edit');
-    });
+    Route::get('/list-author', [AdminController::class, 'getAuthor'])->middleware('redirect.admin');
 
-    Route::get('/list-author', function () {
-        return view('admin.author');
-    });
+    Route::get('/block-author', [AdminController::class, 'blockAuthor'])->middleware('redirect.admin');
+
+    Route::get('/open-author', [AdminController::class, 'openAuthor'])->middleware('redirect.admin');
+
+    Route::get('/logout', [AdminController::class, 'logout']);
 });

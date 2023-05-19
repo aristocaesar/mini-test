@@ -7,7 +7,6 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin/article">Daftar Artikel</a>
-            <a class="collapse-item" href="/admin/add-article">Buat Artikel</a>
         </div>
     </div>
 </li>
